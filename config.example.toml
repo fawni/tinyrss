@@ -1,12 +1,23 @@
-refetch_delay = 2
+color = 15900157  # in decimal
+refetch_delay = 2 # in minutes
 
-[[webhook]]
-url = ""
-subscriptions = [
-    { name = "example", url = "https://example.com" },
-    { name = "Dota 2", url = "https://store.steampowered.com/feeds/news/app/570/", icon = "https://i.imgur.com/NTSBWlH.png", color = "12266520" },
-]
+[[webhook]] ## webhook 0
+url = "" # webhook url
 
-[[webhook]]
+[[webhook.subscription]]
+name = "Dota 2"
+url = "https://store.steampowered.com/feeds/news/app/570/" # feed url
+icon = "https://i.imgur.com/NTSBWlH.png"                   # optional
+color = 12266520                                           # optional
+
+[[webhook.subscription]]
+name = "Wholesome Memes"
+url = "https://nitter.moomoo.me/WholesomeMeme/rss"
+
+
+[[webhook]] ## webhook 1
 url = ""
-subscriptions = [{ name = "example", url = "https://example.com" }]
+
+[[webhook.subscription]]
+name = "Wholesome Memes"
+url = "https://nitter.moomoo.me/WholesomeMeme/rss"

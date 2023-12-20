@@ -7,7 +7,6 @@ use crate::config::Config;
 
 pub type Database = Arc<DatabaseState>;
 
-// #[derive(Deserialize, Serialize)]
 pub struct Record {
     pub title: String,
     pub link: String,
@@ -26,8 +25,8 @@ impl DatabaseState {
     }
 
     pub async fn init(&self, config: &Config) -> Result<(), Box<dyn Error>> {
-        for hook in &config.webhooks {
-            for sub in &hook.subscriptions {
+        for webhook in &config.webhooks {
+            for sub in &webhook.subscriptions {
                 let content = reqwest::get(&sub.url).await?.bytes().await?;
                 let channel = Channel::read_from(&content[..])?;
                 let last = channel

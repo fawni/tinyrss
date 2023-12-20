@@ -4,6 +4,7 @@ use serde::Deserialize;
 
 #[derive(Deserialize, Clone)]
 pub struct Config {
+    pub color: u32,
     pub refetch_delay: u64,
     #[serde(rename = "webhook")]
     pub webhooks: Vec<Webhook>,
@@ -12,6 +13,7 @@ pub struct Config {
 #[derive(Deserialize, Clone)]
 pub struct Webhook {
     pub url: String,
+    #[serde(rename = "subscription")]
     pub subscriptions: Vec<Subscription>,
 }
 
@@ -20,7 +22,7 @@ pub struct Subscription {
     pub name: String,
     pub url: String,
     pub icon: Option<String>,
-    pub color: Option<String>,
+    pub color: Option<u32>,
 }
 
 pub fn read() -> Result<Config, Box<dyn Error>> {

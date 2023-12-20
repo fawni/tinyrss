@@ -27,8 +27,8 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     log::info!("starting watch loop");
     loop {
-        for (i, hook) in config.webhooks.iter().enumerate() {
-            for sub in &hook.subscriptions {
+        for (i, webhook) in config.webhooks.iter().enumerate() {
+            for sub in &webhook.subscriptions {
                 let last = database.get(&sub.name).await?.last;
                 let content = client.get(&sub.url).send().await?.bytes().await?;
                 let channel = Channel::read_from(&content[..])?;
@@ -54,7 +54,8 @@ async fn main() -> Result<(), Box<dyn Error>> {
                         guid
                     );
 
-                    if let Err(e) = webhook::send(&hook.url, &channel, item, sub).await {
+                    if let Err(e) = webhook::send(&webhook.url, &channel, item, sub, &config).await
+                    {
                         log::error!("failed to send webhook: \x1b[31m{e}\x1b[0m");
                     } else {
                         database.set(&sub.name, guid).await?;
