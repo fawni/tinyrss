@@ -1,0 +1,12 @@
+refetch_delay = 2
+
+[[webhook]]
+url = ""
+subscriptions = [
+    { name = "example", url = "https://example.com" },
+    { name = "Dota 2", url = "https://store.steampowered.com/feeds/news/app/570/", icon = "https://i.imgur.com/NTSBWlH.png", color = "12266520" },
+]
+
+[[webhook]]
+url = ""
+subscriptions = [{ name = "example", url = "https://example.com" }]
