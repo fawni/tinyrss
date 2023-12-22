@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": "UPDATE subscriptions SET last = ? WHERE title = ?",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": []
+  },
+  "hash": "485219026676c2aa1f290ccdc08b9e273539d572463f3e01ac1e27f80fbb2ab6"
+}
