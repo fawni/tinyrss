@@ -58,12 +58,15 @@ pub async fn send(
                 msg.embeds[0].thumbnail(icon);
             }
 
-            if let Some(url) = item.link() {
-                msg.embeds[0].url(url);
-            }
-
             if let Some(title) = item.title() {
                 msg.embeds[0].title(title);
+            }
+
+            if let Some(url) = item.link() {
+                msg.embeds[0].url(url);
+                if msg.embeds[0].title.is_none() {
+                    msg.embeds[0].title = Some("link".to_owned());
+                }
             }
 
             if let Some(img) = &image {
